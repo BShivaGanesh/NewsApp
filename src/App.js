@@ -6,10 +6,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
- 
   const [progress, setProgress] = useState(0);
-
- 
   const pageSize = 5;
 
   return (
@@ -18,6 +15,7 @@ const App = () => {
         <Navbar />
         <LoadingBar height={3} color='#f11946' progress={progress} />
         <Routes>
+          {/* Ensure the root path loads the "general" category */}
           <Route
             path="/"
             element={
@@ -30,8 +28,9 @@ const App = () => {
               />
             }
           />
+
+          {/* Other routes */}
           <Route
-            exact
             path="/business"
             element={
               <News
@@ -44,7 +43,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/entertainment"
             element={
               <News
@@ -57,7 +55,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/general"
             element={
               <News
@@ -69,8 +66,7 @@ const App = () => {
               />
             }
           />
-          <Route
-            exact
+           <Route
             path="/health"
             element={
               <News
@@ -83,7 +79,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/science"
             element={
               <News
@@ -96,7 +91,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/sports"
             element={
               <News
@@ -108,8 +102,7 @@ const App = () => {
               />
             }
           />
-          <Route
-            exact
+            <Route
             path="/technology"
             element={
               <News
@@ -121,6 +114,9 @@ const App = () => {
               />
             }
           />
+        
+       
+          <Route path="*" element={<h1>404 - Not Found</h1>} />
         </Routes>
       </Router>
     </div>
